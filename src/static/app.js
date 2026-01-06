@@ -472,10 +472,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // School name constant for sharing
+  const SCHOOL_NAME = "Mergington High School";
+
+  // Function to sanitize text for sharing
+  function sanitizeText(text) {
+    // Remove potentially problematic characters and limit length
+    return text.replace(/[<>]/g, '').substring(0, 200);
+  }
+
   // Function to create shareable content for an activity
   function createShareContent(name, details) {
     const formattedSchedule = formatSchedule(details);
-    const shareText = `Check out ${name} at Mergington High School! ${details.description} Schedule: ${formattedSchedule}`;
+    const sanitizedName = sanitizeText(name);
+    const sanitizedDescription = sanitizeText(details.description);
+    const sanitizedSchedule = sanitizeText(formattedSchedule);
+    const shareText = `Check out ${sanitizedName} at ${SCHOOL_NAME}! ${sanitizedDescription} Schedule: ${sanitizedSchedule}`;
     const shareUrl = window.location.href;
     return { shareText, shareUrl };
   }
