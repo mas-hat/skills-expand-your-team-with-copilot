@@ -508,6 +508,7 @@ document.addEventListener("DOMContentLoaded", () => {
         shareLink = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedText}`;
         break;
       case 'linkedin':
+        // LinkedIn sharing with URL - the platform will generate preview from the URL
         shareLink = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
         break;
     }
